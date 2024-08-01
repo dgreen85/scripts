@@ -1,3 +1,5 @@
+#Primarily created with OpenAI's ChatGPT 4o
+
 import csv
 import requests
 import time
