@@ -1,4 +1,5 @@
 #Primarily created with OpenAI's ChatGPT 4o
+#This script searches a .csv full of URLs for a specific phrase within specific IDs or Classes of a webpage. Output provides csv with url, html line and surrounding text for each mention of the phrase within the body content of that website. 
 
 import csv
 import requests
