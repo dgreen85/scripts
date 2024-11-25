@@ -19,15 +19,17 @@ def search_wistia_urls(html_content, url):
     soup = BeautifulSoup(html_content, 'html.parser')
     results = []
     
-    # Find all script tags
+    # Regex for Wistia URLs
+    wistia_regex = r'https://fast\.wistia\.com/embed/medias/([a-zA-Z0-9]+)\.jsonp'
+    
+    # Search for matches in all script tags
     script_tags = soup.find_all('script', src=True)
     for script in script_tags:
         src = script['src']
-        if "fast.wistia.com/embed/medias/" in src:
-            match = re.search(r'/medias/([a-zA-Z0-9]+)/', src)
-            if match:
-                wistia_id = match.group(1)
-                results.append(wistia_id)
+        match = re.search(wistia_regex, src)
+        if match:
+            wistia_id = match.group(1)
+            results.append(wistia_id)
     
     return results
 
